@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Plussub from './Plussub';
+import Premiumsub from './Premium';
+import Count from './Cont';
 
 function App() {
+  const [mostrarModulos, setMostrarModulos] = useState(false);
+
+  const toggleModulos = () => {
+    setMostrarModulos(!mostrarModulos);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='header row'>Nueva Suscripcion!!
+        <Count></Count>
+        <button onClick={toggleModulos} className='button'>type</button>
+      </div>
+      {mostrarModulos ? (
+        <div>
+          <Plussub />
+        </div>
+      ) : (
+        <div>
+          <Premiumsub />
+        </div>
+      )}
     </div>
   );
 }
 
 export default App;
+
+
